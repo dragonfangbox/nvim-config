@@ -38,6 +38,9 @@ vim.api.nvim_set_keymap('n', '<leader>cl', ':belowright split | term<CR> ', { no
 -- Quick save
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 
+-- set esc to exit terminal mode
+vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-N>', { noremap = true, silent = true })
+
 -- General configurations
 vim.cmd('syntax on')
 
