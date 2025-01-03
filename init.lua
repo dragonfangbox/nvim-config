@@ -80,6 +80,10 @@ require("lazy").setup{
 		 "neovim/nvim-lspconfig"},
 		{"hrsh7th/nvim-cmp", config = function()
 			require'cmp'.setup {
+				snippet = {
+					expand = function() end,
+				},
+
 				completion = {
 						completeopt = 'menuone, noselect',
 					},
@@ -122,7 +126,10 @@ require("mason-lspconfig").setup {
 	ensure_installed = {"lua_ls", "clangd"},
 }
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+capabilities.textDocument.completion.completionItem.snippetSupport = false
+
 -- setup each language server
 require("lspconfig").lua_ls.setup{}
-require("lspconfig").clangd.setup{}
-
+require("lspconfig").clangd.setup{capabilities = capabilities,}
