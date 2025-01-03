@@ -112,7 +112,7 @@ require("lazy").setup{
 
 	install = {colorscheme = {"habamax"}},
 
-	checker = {enabled = true},
+	checker = {enabled = true, notify = false},
 }
 
 -- setup lsp
