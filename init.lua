@@ -69,6 +69,9 @@ vim.opt.splitright = true
 -- Set the colorscheme
 vim.cmd('colorscheme habamax')
 
+-- limit autocomplete to show 10 itmes
+vim.opt.pumheight = 10
+
 -- setup lazy and plugins
 require("lazy").setup{
 	spec = {
@@ -88,6 +91,10 @@ require("lazy").setup{
 						completeopt = 'menuone, noselect',
 					},
 
+				window = {
+					documentation = require'cmp'.config.window.bordered()
+
+				},
 				mapping = {
 		          ['<Down>'] = require'cmp'.mapping.select_next_item(),
 				  ['<Up>'] = require'cmp'.mapping.select_prev_item(),
@@ -131,5 +138,5 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 -- setup each language server
-require("lspconfig").lua_ls.setup{}
+require("lspconfig").lua_ls.setup{capabilities = capabilities,}
 require("lspconfig").clangd.setup{capabilities = capabilities,}
