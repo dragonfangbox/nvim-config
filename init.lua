@@ -27,7 +27,7 @@ vim.api.nvim_set_keymap('i', "'", "''<Esc>ha", { noremap = true, silent = true }
 vim.api.nvim_set_keymap('i', '`', '``<Esc>ha', { noremap = true, silent = true })
 
 -- open telescope (see plugins) 
-vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files hidden=true<CR>', { noremap = true, silent = true })
 
 -- Split vertically
 vim.api.nvim_set_keymap('n', '<leader>ss', ':vs<CR>', { noremap = true, silent = true })
