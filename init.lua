@@ -1,42 +1,41 @@
-	-- boot lazy
-	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-	if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	  if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-		  { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-		  { out, "WarningMsg" },
-		  { "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	  end
-	end
-	vim.opt.rtp:prepend(lazypath)
+-- boot lazypath	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+	vim.api.nvim_echo({
+	  { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+	  { out, "WarningMsg" },
+	  { "\nPress any key to exit..." },
+	}, true, {})
+	vim.fn.getchar()
+	os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
-	-- Set the leader key to space
-	vim.g.mapleader = " "
+-- Set the leader key to space
+vim.g.mapleader = " "
 
-	-- Auto add ending brackets and other things
-	vim.api.nvim_set_keymap('i', '{', '{}<Esc>ha', { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('i', '(', '()<Esc>ha', { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('i', '[', '[]<Esc>ha', { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('i', '"', '""<Esc>ha', { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('i', "'", "''<Esc>ha", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap('i', '`', '``<Esc>ha', { noremap = true, silent = true })
+-- Auto add ending brackets and other things
+vim.api.nvim_set_keymap('i', '{', '{}<Esc>ha', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '(', '()<Esc>ha', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '[', '[]<Esc>ha', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '"', '""<Esc>ha', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', "'", "''<Esc>ha", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '`', '``<Esc>ha', { noremap = true, silent = true })
 
-	-- open telescope (see plugins) 
-	vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files hidden=true<CR>', { noremap = true, silent = true })
+-- open telescope (see plugins) 
+vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files hidden=true<CR>', { noremap = true, silent = true })
 
-	-- Split vertically
-	vim.api.nvim_set_keymap('n', '<leader>ss', ':vs<CR>', { noremap = true, silent = true })
+-- Split vertically
+vim.api.nvim_set_keymap('n', '<leader>ss', ':vs<CR>', { noremap = true, silent = true })
 
-	-- split horizontally with terminal
-	vim.api.nvim_set_keymap('n', '<leader>cl', ':belowright split | term<CR> ', { noremap = true, silent = true})
+-- split horizontally with terminal
+vim.api.nvim_set_keymap('n', '<leader>cl', ':belowright split | term<CR> ', { noremap = true, silent = true})
 
-	-- make new tab 
-	vim.api.nvim_set_keymap('n', '<leader>nt', ':tabnew<CR>', { noremap = true, silent = true})
+-- make new tab 
+vim.api.nvim_set_keymap('n', '<leader>nt', ':tabnew<CR>', { noremap = true, silent = true})
 
 -- Quick save
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
