@@ -44,6 +44,9 @@ vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = t
 -- set esc to exit terminal mode
 vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-N>', { noremap = true, silent = true })
 
+-- show error message
+vim.api.nvim_set_keymap('n', '<leader>e', ':lua =vim.diagnostic.open_float<CR>', { noremap = true, silent = true })
+
 -- General configurations
 vim.cmd('syntax on')
 
@@ -55,8 +58,8 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 vim.opt.expandtab = false
 
 vim.opt.incsearch = true
@@ -136,7 +139,7 @@ require("lazy").setup{
 -- setup lsp
 require("mason").setup()
 require("mason-lspconfig").setup {
-	ensure_installed = {"lua_ls", "clangd"},
+	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls"},
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -146,3 +149,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = false
 -- setup each language server
 require("lspconfig").lua_ls.setup{capabilities = capabilities,}
 require("lspconfig").clangd.setup{capabilities = capabilities,}
+require("lspconfig").glsl_analyzer.setup{capabilities = capabilities,}
+require("lspconfig").zls.setup{capabilities = capabilities,}
+
+-- turn off zig auto-format
+vim.g.zig_fmt_autosave = 0
