@@ -139,7 +139,7 @@ require("lazy").setup{
 -- setup lsp
 require("mason").setup()
 require("mason-lspconfig").setup {
-	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls"},
+	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls", "basedpyright"},
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -151,6 +151,7 @@ require("lspconfig").lua_ls.setup{capabilities = capabilities,}
 require("lspconfig").clangd.setup{capabilities = capabilities,}
 require("lspconfig").glsl_analyzer.setup{capabilities = capabilities,}
 require("lspconfig").zls.setup{capabilities = capabilities,}
+require("lspconfig").basedpyright.setup{capabilities = capabilities,}
 
 -- turn off zig auto-format
 vim.g.zig_fmt_autosave = 0
