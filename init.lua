@@ -45,7 +45,7 @@ vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-N>', { noremap = true, silent = true })
 
 -- show error message
-vim.api.nvim_set_keymap('n', '<leader>e', ':lua =vim.diagnostic.open_float<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
 -- General configurations
 vim.cmd('syntax on')
@@ -151,13 +151,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 -- setup each language server
-require("lspconfig").lua_ls.setup{capabilities = capabilities,}
+require("lspconfig").lua_ls.setup{diagnostics = {globals = {'vim'}}, capabilities = capabilities, }
 require("lspconfig").clangd.setup{capabilities = capabilities,}
 require("lspconfig").glsl_analyzer.setup{capabilities = capabilities,}
 require("lspconfig").zls.setup{capabilities = capabilities,}
 require("lspconfig").basedpyright.setup{capabilities = capabilities,}
 require("lspconfig").ocamllsp.setup{capabilities = capabilities,}
 require("lspconfig").hls.setup{capabilities = capabilities,}
+
+
 
 -- turn off zig auto-format
 vim.g.zig_fmt_autosave = 0
