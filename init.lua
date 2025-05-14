@@ -75,16 +75,19 @@ vim.opt.ignorecase = true
 
 vim.opt.splitright = true
 
--- Set the colorscheme
-vim.cmd('colorscheme habamax')
 
 -- limit autocomplete to show 10 itmes
 vim.opt.pumheight = 10
 
+-- Set the colorscheme
+vim.cmd('colorscheme habamax')
+
 -- setup lazy and plugins
 require("lazy").setup{
 	spec = {
+		-- colorscheme stuff
 		{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+
 		{"nvim-telescope/telescope.nvim", tag = "0.1.8", dependencies = {"nvim-lua/plenary.nvim"}},
 		--lsp magic
 		{"williamboman/mason.nvim",
@@ -135,6 +138,7 @@ require("lazy").setup{
 
 	checker = {enabled = true, notify = false},
 }
+vim.cmd('colorscheme habamax')
 
 -- setup lsp
 require("mason").setup()
