@@ -1,3 +1,2 @@
-# nvim-config
-
-just a single file neovim setup.
+### nvim-config
+Minimal config for Neovim that is fairly customizable and lightweight.

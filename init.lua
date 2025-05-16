@@ -75,69 +75,21 @@ vim.opt.ignorecase = true
 
 vim.opt.splitright = true
 
-
 -- limit autocomplete to show 10 itmes
 vim.opt.pumheight = 10
-
--- Set the colorscheme
-vim.cmd('colorscheme habamax')
 
 -- setup lazy and plugins
 require("lazy").setup{
 	spec = {
-		-- colorscheme stuff
-		{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-
-		{"nvim-telescope/telescope.nvim", tag = "0.1.8", dependencies = {"nvim-lua/plenary.nvim"}},
-		--lsp magic
-		{"williamboman/mason.nvim",
-		 "williamboman/mason-lspconfig.nvim",
-		 "neovim/nvim-lspconfig"},
-		{"hrsh7th/nvim-cmp", config = function()
-			require'cmp'.setup {
-				snippet = {
-					expand = function() end,
-				},
-
-				completion = {
-						completeopt = 'menuone, noselect',
-					},
-
-				window = {
-					documentation = require'cmp'.config.window.bordered()
-
-				},
-				mapping = {
-		          ['<Down>'] = require'cmp'.mapping.select_next_item(),
-				  ['<Up>'] = require'cmp'.mapping.select_prev_item(),
-		          ['<C-d>'] = require'cmp'.mapping.scroll_docs(4),
-				  ['<C-u>'] = require'cmp'.mapping.scroll_docs(-4),
-		          ['<C-Space>'] = require'cmp'.mapping.complete(),
-		          ['<CR>'] = require'cmp'.mapping.confirm({ select = true }),
-			    },
-			    sources = {
-			      { name = 'nvim_lsp' },
-		          { name = 'buffer' },
-		          { name = 'path' },
-				},
-				experimental = {
-					ghost_text = true,
-					native_menu = false,
-				},
-		      }
-		    end
-
-		},
-		{"hrsh7th/cmp-buffer"},
-		{"hrsh7th/cmp-path"},
-		{"hrsh7th/cmp-nvim-lsp"},
+		{import = "plugins"},
 	},
-
 
 	install = {colorscheme = {"habamax"}},
 
 	checker = {enabled = true, notify = false},
 }
+
+-- Set the colorscheme
 vim.cmd('colorscheme habamax')
 
 -- setup lsp
@@ -151,15 +103,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 -- setup each language server
-require("lspconfig").lua_ls.setup{diagnostics = {globals = {'vim'}}, capabilities = capabilities, }
-require("lspconfig").clangd.setup{capabilities = capabilities,}
-require("lspconfig").glsl_analyzer.setup{capabilities = capabilities,}
-require("lspconfig").zls.setup{capabilities = capabilities,}
-require("lspconfig").basedpyright.setup{capabilities = capabilities,}
-require("lspconfig").ocamllsp.setup{capabilities = capabilities,}
-require("lspconfig").hls.setup{capabilities = capabilities,}
-
-
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup{diagnostics = {globals = {'vim'}}, capabilities = capabilities, }
+lspconfig.clangd.setup{capabilities = capabilities,}
+lspconfig.glsl_analyzer.setup{capabilities = capabilities,}
+lspconfig.zls.setup{capabilities = capabilities,}
+lspconfig.basedpyright.setup{capabilities = capabilities,}
+lspconfig.ocamllsp.setup{capabilities = capabilities,}
+lspconfig.hls.setup{capabilities = capabilities,}
 
 -- turn off zig auto-format
 vim.g.zig_fmt_autosave = 0
+
