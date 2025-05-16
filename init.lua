@@ -89,12 +89,13 @@ require("lazy").setup{
 	checker = {enabled = true, notify = false},
 }
 
--- Set the colorscheme
+--colorscheme stuff
 vim.cmd('colorscheme habamax')
+vim.opt.termguicolors = true
 
 -- setup lsp
 require("mason").setup()
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup{
 	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls", "basedpyright", "ocamllsp", "hls"},
 }
 
