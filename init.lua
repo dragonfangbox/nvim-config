@@ -87,26 +87,25 @@ require("lazy").setup{
 		{import = "plugins"},
 	},
 
-	install = {colorscheme = {"habamax"}},
+	install = {colorscheme = {"hybrid"}},
 
 	checker = {enabled = true, notify = false},
 }
 
 --colorscheme stuff
-vim.cmd('colorscheme habamax')
+vim.cmd('colorscheme hybrid')
 vim.opt.termguicolors = true
 
 -- setup lsp
 require("mason").setup()
 require("mason-lspconfig").setup{
-	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls", "basedpyright", "ocamllsp", "hls"},
+	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls", "basedpyright", "ocamllsp", "hls", "gopls"},
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 local lspconfig = require("lspconfig")
-
 require("mason-lspconfig").setup({
 	handlers = {
 		function(serverName)
