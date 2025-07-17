@@ -96,38 +96,6 @@ require("lazy").setup{
 vim.cmd('colorscheme hybrid')
 vim.opt.termguicolors = true
 
--- setup lsp
-require("mason").setup()
-require("mason-lspconfig").setup{
-	ensure_installed = {"lua_ls", "clangd", "glsl_analyzer", "zls", "basedpyright", "ocamllsp", "hls", "gopls"},
-}
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = false
-
-local lspconfig = require("lspconfig")
-require("mason-lspconfig").setup({
-	handlers = {
-		function(serverName)
-			lspconfig[serverName].setup({
-				capabilities = capabilities,
-			})
-		end
-	},
-})
-
--- setup each language server
--- (i learned mason does this automatically, 
---  so i was double loading LSPs.)
---local lspconfig = require("lspconfig")
---lspconfig.lua_ls.setup{capabilities = capabilities,}
---lspconfig.clangd.setup{capabilities = capabilities,}
---lspconfig.glsl_analyzer.setup{capabilities = capabilities,}
---lspconfig.zls.setup{capabilities = capabilities,}
---lspconfig.basedpyright.setup{capabilities = capabilities,}
---lspconfig.ocamllsp.setup{capabilities = capabilities,}
---lspconfig.hls.setup{capabilities = capabilities,}
-
 -- turn off zig auto-format
 vim.g.zig_fmt_autosave = 0
 
