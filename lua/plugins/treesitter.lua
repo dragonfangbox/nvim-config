@@ -16,7 +16,8 @@ return {
 				"html",
 				"lua",
 				"zig",
-				"tmux"
+				"tmux",
+				"ocaml"
 			}
 		})
 	end
