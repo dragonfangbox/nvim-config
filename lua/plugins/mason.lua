@@ -9,7 +9,8 @@ return {
 							"basedpyright",
 							"ocamllsp",
 							"hls",
-							"gopls"},
+							"gopls",
+		},
 	},
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },

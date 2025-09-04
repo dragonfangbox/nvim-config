@@ -75,6 +75,8 @@ vim.opt.ignorecase = true
 
 vim.opt.splitright = true
 
+vim.opt.hlsearch = false
+
 -- show inline errors 
 vim.diagnostic.config({ virtual_text = true })
 
