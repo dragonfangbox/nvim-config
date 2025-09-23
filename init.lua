@@ -47,6 +47,9 @@ vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-N>', { noremap = true, silent = 
 -- show error message
 vim.api.nvim_set_keymap('n', '<leader>e', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
+-- open netrw
+vim.api.nvim_set_keymap('n', '<leader>ex', ':Ex<CR>', { noremap = true, silent = true })
+
 -- General configurations
 vim.cmd('syntax on')
 
