@@ -48,7 +48,7 @@ vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-N>', { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<leader>e', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
 -- open netrw
-vim.api.nvim_set_keymap('n', '<leader>ex', ':Ex<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fe', ':Ex<CR>', { noremap = true, silent = true })
 
 -- General configurations
 vim.cmd('syntax on')
@@ -96,6 +96,28 @@ require("lazy").setup{
 
 	checker = {enabled = true, notify = false},
 }
+
+--require("mason-lspconfig").setup({
+--	automatic_enable = {
+--		exclude = { "luau-lsp" },
+--	},
+--})
+
+-- lsp configs
+local capabilities  = require("cmp_nvim_lsp").default_capabilities()
+
+vim.lsp.config("luau_lsp", {
+	settings = {
+		["luau-lsp"] = {
+		  platform = {
+			type = {"roblox"},
+		  },
+		  types = {
+			roblox_security_level = "PluginSecurity",
+		  },
+	},
+  },
+})
 
 --colorscheme stuff
 vim.cmd('colorscheme hybrid')

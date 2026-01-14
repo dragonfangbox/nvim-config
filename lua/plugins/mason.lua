@@ -10,6 +10,7 @@ return {
 							"ocamllsp",
 							"hls",
 							"gopls",
+							"luau_lsp",
 		},
 	},
     dependencies = {
