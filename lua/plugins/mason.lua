@@ -12,9 +12,14 @@ return {
 							"gopls",
 							"luau_lsp",
 		},
+		automatic_enable = {
+			exclude = { "luau_lsp" },
+		},
 	},
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
+        { "mason-org/mason.nvim", opts = { } },
+		{
+			"neovim/nvim-lspconfig",
+		},
     }
 }

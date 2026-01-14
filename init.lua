@@ -97,27 +97,8 @@ require("lazy").setup{
 	checker = {enabled = true, notify = false},
 }
 
---require("mason-lspconfig").setup({
---	automatic_enable = {
---		exclude = { "luau-lsp" },
---	},
---})
+local capabilites = require("cmp_nvim_lsp").default_capabilities()
 
--- lsp configs
-local capabilities  = require("cmp_nvim_lsp").default_capabilities()
-
-vim.lsp.config("luau_lsp", {
-	settings = {
-		["luau-lsp"] = {
-		  platform = {
-			type = {"roblox"},
-		  },
-		  types = {
-			roblox_security_level = "PluginSecurity",
-		  },
-	},
-  },
-})
 
 --colorscheme stuff
 vim.cmd('colorscheme hybrid')
