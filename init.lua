@@ -86,6 +86,16 @@ vim.diagnostic.config({ virtual_text = true })
 -- limit autocomplete to show 10 itmes
 vim.opt.pumheight = 10
 
+vim.lsp.config("*", {
+	capabilities = {
+		workspace = {
+			didChangeWatchedFiles = {
+				dynamicRegistration = true,
+			}
+		}
+	}
+})
+
 -- setup lazy and plugins
 require("lazy").setup{
 	spec = {
@@ -97,7 +107,6 @@ require("lazy").setup{
 	checker = {enabled = true, notify = false},
 }
 
-local capabilites = require("cmp_nvim_lsp").default_capabilities()
 
 
 --colorscheme stuff
